@@ -34,7 +34,7 @@ Step 5: 完了レポート
 直近データを反映したい場合は先にデータ同期を実行:
 
 ```bash
-cd /Users/nakanokentaro/develop/active/nakano && python3 businesses/dober/sync_threads_to_notion.py
+python3 skills/dober-data-sync/scripts/sync_threads_to_notion.py
 ```
 
 > スキップしてよいケース: 直近1週間以内にデータ同期済みの場合
@@ -44,7 +44,7 @@ cd /Users/nakanokentaro/develop/active/nakano && python3 businesses/dober/sync_t
 ## Step 2: トップポスト取得
 
 ```bash
-cd /Users/nakanokentaro/develop/active/nakano && python3 businesses/dober/fetch_top_posts.py --min-impressions 3000 --json
+python3 skills/dober-post-rewrite/scripts/fetch_top_posts.py --min-impressions 3000 --json
 ```
 
 取得結果を分析して以下を把握する:
@@ -85,8 +85,8 @@ cd /Users/nakanokentaro/develop/active/nakano && python3 businesses/dober/fetch_
 
 ファイルに保存:
 ```bash
-mkdir -p /Users/nakanokentaro/develop/active/nakano/businesses/dober/content/drafts/
-OUTFILE="/Users/nakanokentaro/develop/active/nakano/businesses/dober/content/drafts/$(date +%Y-%m)_rewrite_posts.json"
+mkdir -p businesses/dober/content/drafts/
+OUTFILE="businesses/dober/content/drafts/$(date +%Y-%m)_rewrite_posts.json"
 # → 生成したJSONをこのパスに書き込む
 ```
 
@@ -95,9 +95,8 @@ OUTFILE="/Users/nakanokentaro/develop/active/nakano/businesses/dober/content/dra
 ## Step 4: Notionへ一括登録
 
 ```bash
-cd /Users/nakanokentaro/develop/active/nakano && \
-  python3 businesses/dober/save_posts_to_notion.py \
-    --input businesses/dober/content/drafts/$(date +%Y-%m)_rewrite_posts.json
+python3 skills/dober-post-to-notion/scripts/save_posts_to_notion.py \
+  --input businesses/dober/content/drafts/$(date +%Y-%m)_rewrite_posts.json
 ```
 
 ---

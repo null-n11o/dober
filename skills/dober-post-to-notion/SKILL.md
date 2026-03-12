@@ -19,7 +19,7 @@ description: リライト済みのDoberポストをNotionデータベースにRe
 登録対象のJSONファイルを確認する:
 
 ```bash
-ls -la /Users/nakanokentaro/develop/active/nakano/businesses/dober/content/drafts/
+ls -la businesses/dober/content/drafts/
 ```
 
 ファイルが見当たらない場合は `/dober-post-rewrite` を先に実行してください。
@@ -29,15 +29,14 @@ ls -la /Users/nakanokentaro/develop/active/nakano/businesses/dober/content/draft
 JSONファイルを指定してスクリプトを実行:
 
 ```bash
-cd /Users/nakanokentaro/develop/active/nakano && python3 businesses/dober/save_posts_to_notion.py --input [JSONファイルパス]
+python3 skills/dober-post-to-notion/scripts/save_posts_to_notion.py --input [JSONファイルパス]
 ```
 
 **最新のドラフトファイルを自動指定する場合:**
 ```bash
-cd /Users/nakanokentaro/develop/active/nakano && \
-  LATEST=$(ls -t businesses/dober/content/drafts/*_rewrite_posts.json 2>/dev/null | head -1) && \
+LATEST=$(ls -t businesses/dober/content/drafts/*_rewrite_posts.json 2>/dev/null | head -1) && \
   if [ -n "$LATEST" ]; then \
-    python3 businesses/dober/save_posts_to_notion.py --input "$LATEST"; \
+    python3 skills/dober-post-to-notion/scripts/save_posts_to_notion.py --input "$LATEST"; \
   else \
     echo "ドラフトファイルが見つかりません。先に /dober-post-rewrite を実行してください。"; \
   fi

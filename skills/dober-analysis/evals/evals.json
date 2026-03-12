@@ -1,0 +1,39 @@
+{
+  "skill_name": "dober-analysis",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "今週のDoberのデータ分析をお願い",
+      "expected_output": "Threadsデータの同期を実行し、直近7日間の分析レポートを生成する。TOP投稿・週次トレンド・エンゲージメント率を含むMarkdownレポートがreports/に保存される。",
+      "files": [],
+      "expectations": [
+        "sync_threads_to_notion.py を実行してデータを同期している",
+        "analyze_notion_data.py --days 7 を実行している",
+        "インプレッション・ライク・エンゲージメント率が含まれている",
+        "TOP投稿のランキングが表示されている",
+        "次のアクション提案が含まれている"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "先月のDober投稿のパフォーマンスを見せて",
+      "expected_output": "直近30日の分析レポートを生成する。週次トレンド・TOP10投稿が含まれる。",
+      "files": [],
+      "expectations": [
+        "analyze_notion_data.py --days 30 を実行している",
+        "週次トレンドテーブルが8週分含まれている",
+        "TOP10投稿がインプレッション順で表示されている"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Doberのデータを最新に更新して",
+      "expected_output": "dober-data-sync スキルが起動し、sync_threads_to_notion.py が実行される。更新・新規作成・スキップ件数が報告される。",
+      "files": [],
+      "expectations": [
+        "sync_threads_to_notion.py を実行している",
+        "更新件数・新規作成件数・スキップ件数を報告している"
+      ]
+    }
+  ]
+}

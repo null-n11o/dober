@@ -1,11 +1,11 @@
 ---
 name: dober-post-to-notion
-description: リライト済みのDoberポストをNotionデータベースにReadyステータスで登録する。「リライトポストをNotionに入れて」「ドラフトをNotionに登録して」「ポストキューをセットして」などで自動起動する。
+description: リライト済みのDoberポストをNotionデータベースにNot Startedステータスで登録する。「リライトポストをNotionに入れて」「ドラフトをNotionに登録して」「ポストキューをセットして」などで自動起動する。
 ---
 
 # Dober ポスト → Notion登録スキル
 
-リライト済みのポスト（JSONファイル）をNotionデータベースに「Ready」ステータスで一括登録します。
+リライト済みのポスト（JSONファイル）をNotionデータベースに「Not Started」ステータスで一括登録します。
 
 ## 前提
 
@@ -46,7 +46,7 @@ LATEST=$(ls -t businesses/dober/content/drafts/*_rewrite_posts.json 2>/dev/null 
 
 実行結果を報告する:
 - Notionに登録したポスト数（成功・失敗）
-- 登録したポストのStatusが「Ready」であること
+- 登録したポストのStatusが「Not Started」であること
 - 失敗した場合はエラー内容と対処法
 
 ## Notion DBプロパティ構成
@@ -57,7 +57,7 @@ LATEST=$(ls -t businesses/dober/content/drafts/*_rewrite_posts.json 2>/dev/null 
 |-----------|-----|
 | Title | 投稿内容の先頭50文字 |
 | Content | 投稿本文（最大2000文字） |
-| Status | **Ready** |
+| Status | **Not Started** |
 | Source Post ID | 元ポストのThreads ID（リライト元がある場合） |
 
 ## トラブルシューティング

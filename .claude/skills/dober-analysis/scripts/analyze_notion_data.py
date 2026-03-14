@@ -25,7 +25,7 @@ NOTION_API_TOKEN = os.environ["NOTION_API_TOKEN"]
 NOTION_VERSION = "2022-06-28"
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-REPORTS_DIR = os.path.join(SCRIPT_DIR, "reports")
+REPORTS_DIR = os.path.join(SCRIPT_DIR, "..", "reports")
 
 # =============================================================================
 # Notion データ取得

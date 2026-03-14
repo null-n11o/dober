@@ -124,18 +124,9 @@ def create_rewrite_post(post: Dict) -> bool:
             ]
         },
         "Status": {
-            "select": {"name": "Ready"}
+            "status": {"name": "Not Started"}
         }
     }
-
-    # 元ポストIDがあれば記録
-    source_id = post.get("source_post_id", "")
-    if source_id:
-        properties["Source Post ID"] = {
-            "rich_text": [
-                {"text": {"content": source_id}}
-            ]
-        }
 
     payload = {
         "parent": {"database_id": NOTION_DATABASE_ID},
